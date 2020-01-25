@@ -14,3 +14,13 @@ function searchFunction() {
         }
     }
 }
+
+function hideSympt() {
+    var ul, li;
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        li[i].style.display = "none";
+    }
+    console.log("Func. work")
+}
