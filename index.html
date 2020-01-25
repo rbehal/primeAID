@@ -10,8 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&libraries=places"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&callback=initMap"
-    async defer></script>
+    
     
     <script>
         $(document).ready(function(){
@@ -34,7 +33,7 @@
                     <form>
                         <div class="form-group">
                             <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" placeholder="Search for symptoms..." title="Type in a name">
-                            <ul id="myUL">
+                                <ul id="myUL">
                                 <li><a href="#">Abdominal guarding</a></li>
                                 <li><a href="#">Abdominal pain</a></li>
                                 <li><a href="#">Abdominal pain associated with menstruation</a></li>
@@ -306,9 +305,11 @@
                                 <li><a href="#">Wound</a></li>
                                 <li><a href="#">Yellow colored skin</a></li>
                                 <li><a href="#">Yellowish discoloration of the white part of the eye</a></li> 
-                                </ul>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enter</button>
+                            </ul> 
+                        </input>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Enter</button>
                     </form>
                 </div>
             </div>
@@ -323,6 +324,7 @@
        
     <script src="./maps.js"></script>
     <script src="./search.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&callback=initMap"
+    async defer></script>
   </body>
 </html> 
-
