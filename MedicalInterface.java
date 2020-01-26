@@ -93,7 +93,7 @@ public class MedicalInterface extends JPanel{
           connection.setRequestMethod("GET");
           connection.setRequestProperty("Authorization", "bearer " + new String(Register.token));
           connection.setDoOutput(true);
-          System.out.println("Bearer " + Register.token);
+          //System.out.println("Bearer " + Register.token);
         } else {
           connection.setRequestMethod("POST");
         }

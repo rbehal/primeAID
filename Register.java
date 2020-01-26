@@ -303,11 +303,10 @@ public class Register {
     }
     
     public static void checkUserCredentials(String username, String password, String newEmail, String oldEmail, String inputUsername, String inputPassword){
+        
         for(int i = 0; i < MedicalInterface.getRegistrantList().size(); i++) {
             
             // make sure name, password and email all matc to database
-            
-            if(patientExists) break;
             
             if(username.equals(inputUsername) && password.equals(inputPassword) && newEmail.equals(oldEmail)) {
                 //Create a patient in registration
@@ -317,17 +316,17 @@ public class Register {
                     patientWaitingList.add(new Patient(username, password));
                     patientExists = true;
                     
-                    System.out.println(patientWaitingList.get(0).getArrivalTime());
-                    
                     errorMessage.setForeground(Color.GREEN);
                     errorMessage.setText("Successfully added patient to queue...");
                     errorMessage.setVisible(true);
                     
                     break;
-                }
+                } else {patientExists = false;}
               
                 for(Patient patient : patientWaitingList) {
-                    if(!patient.getUsername().equals(username)|| !patient.getPassword().equals(password)) {
+                  
+                    //No replicates
+                    if(!patient.getUsername().equals(username) || !patient.getPassword().equals(password)) {
                       
                       //Add patient to list
                         patientWaitingList.add(new Patient(username, password));
@@ -344,8 +343,12 @@ public class Register {
                         errorMessage.setForeground(Color.RED);
                         errorMessage.setText("Patient already registered...");
                         errorMessage.setVisible(true);
+                        
+                        patientExists = false;
                     }
                 }
+                
+                if(patientExists) break;
             } 
         } 
     }
