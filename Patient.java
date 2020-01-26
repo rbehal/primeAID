@@ -17,6 +17,7 @@ public class Patient {
        DateTimeFormatter getTime = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
        LocalDateTime arrivalTime = LocalDateTime.now();  
        
+       this.arrivalTime = arrivalTime;
        this.username = username;
        this.password = password;
     } 

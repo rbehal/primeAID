@@ -46,22 +46,31 @@ public class Register {
         JLabel titleLabel = new JLabel();
         titleLabel.setText("Register a patient");
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        titleLabel.setBackground(Color.GREEN);
+        titleLabel.setBackground(Color.BLACK);
         titleLabel.setOpaque(true);
         titleLabel.setBounds(0, 20,600, 60);
+        titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(new Font("Courier", Font.BOLD,40));
+        
+        JLabel image = new JLabel();
+        image.setIcon(new ImageIcon("./src/primeAID/media/PLogo.png"));
+        image.setVisible(true);
+        image.setSize(300, 130);
+        image.setLocation(55, 215);
         
         usernameLabel = new JLabel();
         usernameLabel.setText("Username: ");
         usernameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        usernameLabel.setBackground(Color.LIGHT_GRAY);
+        usernameLabel.setBackground(Color.WHITE);
         usernameLabel.setOpaque(true);
+        usernameLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         usernameLabel.setBounds(0, 125, 240, 25);
         
         passwordLabel = new JLabel();
         passwordLabel.setText("Password: ");
         passwordLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        passwordLabel.setBackground(Color.LIGHT_GRAY);
+        passwordLabel.setBackground(Color.WHITE);
+        passwordLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         passwordLabel.setOpaque(true);
         passwordLabel.setBounds(0, 175, 240, 25);
         
@@ -77,19 +86,20 @@ public class Register {
         
         JButton loginButton = new JButton("Register!");
         loginButton.setBounds(300, 250, 130, 60);
-        loginButton.setBorder(BorderFactory.createLineBorder(Color.GREEN, 4));
+        loginButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
         loginButton.setOpaque(true);
         
         errorMessage = new JLabel();
         errorMessage.setText("");
-        errorMessage.setBounds(0, 330, 3000, 20);
+        errorMessage.setBounds(0, 330, 600, 20);
         errorMessage.setVisible(false);
         errorMessage.setBackground(Color.WHITE);
         errorMessage.setForeground(Color.RED);
+        errorMessage.setHorizontalAlignment(SwingConstants.CENTER);
         errorMessage.setOpaque(true);
 
         JPanel panel = new JPanel();
-        panel.setBackground(Color.DARK_GRAY);
+        panel.setBackground(Color.WHITE);
         panel.setSize(600, 390);
         panel.setLayout(null);
         panel.setLocation(0, 0);
@@ -102,6 +112,7 @@ public class Register {
         panel.add(passwordInput);
         panel.add(errorMessage);
         panel.add(loginButton);
+        panel.add(image);
 
         panel.setVisible(true);
      
@@ -115,11 +126,11 @@ public class Register {
         
         JButton returnButton = new JButton();
         returnButton.setFont(new Font("Courier", Font.PLAIN,10));
-        returnButton.setSize(50, 60);
+        returnButton.setSize(50, 25);
         returnButton.setText("Return");
-        returnButton.setBorder(BorderFactory.createLineBorder(Color.GREEN, 4));
+        returnButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         returnButton.setOpaque(true);
-        returnButton.setLocation(190,250);
+        returnButton.setLocation(480,125);
         returnButton.setVisible(true);
         
         panel.add(returnButton);
@@ -129,7 +140,7 @@ public class Register {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ConfirmEmail.run();
-                closeFrame();
+                Register.closeFrame();
             }
         });
 
@@ -218,8 +229,6 @@ public class Register {
         try {
             patientResponse = MedicalInterface.excutePost("https://sandbox030.tactiorpm7000.com/tactio_clinical_restful_api.php/1.1.5/Patient", urlParameters, true);
             
-            System.out.println(patientResponse);
-            
         } catch (InternalException exc){
             errorMessage.setText(exc.getMessage());
             errorMessage.setVisible(true);
@@ -294,9 +303,6 @@ public class Register {
     }
     
     public static void checkUserCredentials(String username, String password, String newEmail, String oldEmail, String inputUsername, String inputPassword){
-      
-        System.out.println(username + " | " + inputUsername + " | " + password + " | " + inputPassword + " | " + newEmail + " | " + oldEmail);
-        System.out.println(patientWaitingList.size());
         for(int i = 0; i < MedicalInterface.getRegistrantList().size(); i++) {
             
             // make sure name, password and email all matc to database
@@ -311,6 +317,8 @@ public class Register {
                     patientWaitingList.add(new Patient(username, password));
                     patientExists = true;
                     
+                    System.out.println(patientWaitingList.get(0).getArrivalTime());
+                    
                     errorMessage.setForeground(Color.GREEN);
                     errorMessage.setText("Successfully added patient to queue...");
                     errorMessage.setVisible(true);
@@ -323,6 +331,7 @@ public class Register {
                       
                       //Add patient to list
                         patientWaitingList.add(new Patient(username, password));
+                        
                         patientExists = true;
                         
                         errorMessage.setForeground(Color.GREEN);
