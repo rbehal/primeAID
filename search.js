@@ -70,14 +70,21 @@ function getSympt(symptoms) {
 }
 
 function triageResult() {
-    var innerHTMLString = "<table> <tr> <th> <style> text-align: center </style>Prioritised Diagnostics</th> </tr>"
+    var innerHTMLString = '<table class="pure-table pure-table-bordered">\
+                            <thead>\
+                            <tr>\
+                                <th>Diagnostics Table</th>\
+                            </tr>\
+                        </thead>\
+                        <tbody>\
+                        ' 
 
     for (var i = 0; i<diagnosis.length; i++) {
         if (i == diagnosis.length - 1) {
-            innerHTMLString += "<tr> <td> " + diagnosis[i] + " </td> </tr> </table>"; 
+            innerHTMLString += '<tr> <td> ' + diagnosis[i] + '</td></tr> </tbody> </table>'; 
         }
         else {
-            innerHTMLString += "<tr> <td> " + i + ") " + diagnosis[i] + " </td> </tr>"; 
+            innerHTMLString += "<tr><td>" + i + ") " + diagnosis[i] + "</td></tr>"; 
         }
     }
     var element = document.getElementById('modalBack');

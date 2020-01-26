@@ -82,27 +82,3 @@ body, html {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 
-
-table, td, th {  
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size: 25px;
-  }
-  
-  table {
-    border-collapse: collapse;
-    width: 35%;
-    font-size: 25px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
-    position: relative;
-    top: 10%;
-    transform: translateY(-10%)
-  }
-  
-  th, td {
-    padding: 15px;
-    text-align: center;
-    font-size: 25px;
-  }
