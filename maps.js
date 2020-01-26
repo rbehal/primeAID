@@ -37,6 +37,7 @@ function initMap() {
     });
     infoWindow = new google.maps.InfoWindow;
     var image = './media/hospital_icon.png'
+    var image2 = './media/walkin_icon.png'
   
     
       var infowindow = new google.maps.InfoWindow({
@@ -46,7 +47,7 @@ function initMap() {
       var marker = new google.maps.Marker({
       position: new google.maps.LatLng(45.460076, -73.576396),
       map: map,
-      icon: image
+      icon: image2
       
       });
   
@@ -62,7 +63,7 @@ function initMap() {
       var marker1 = new google.maps.Marker({
       position: new google.maps.LatLng(45.530458, -73.576428),
       map: map,
-      icon: image
+      icon: image2
       });
   
       marker1.addListener('click', function() {
@@ -77,7 +78,7 @@ function initMap() {
       var marker2 = new google.maps.Marker({
           position: new google.maps.LatLng(45.53426, -73.576691),
           map: map,
-          icon: image
+          icon: image2
       });
   
       marker2.addListener('click', function() {
@@ -92,7 +93,7 @@ function initMap() {
       var marker3 = new google.maps.Marker({
           position: new google.maps.LatLng(45.488869, -73.586067),
           map: map,
-          icon: image
+          icon: image2
           
       });
   
@@ -107,7 +108,7 @@ function initMap() {
       var marker4 = new google.maps.Marker({
           position: new google.maps.LatLng(45.486860, -73.588640),
           map: map,
-          icon: image
+          icon: image2
   
       });
   
@@ -122,7 +123,7 @@ function initMap() {
       var marker5 = new google.maps.Marker({
           position: new google.maps.LatLng(45.499480, -73.630020),
           map: map,
-          icon: image
+          icon: image2
           
       });
   
@@ -137,7 +138,7 @@ function initMap() {
       var marker6 = new google.maps.Marker({
           position: new google.maps.LatLng(45.500420, -73.577980),
           map: map,
-          icon: image
+          icon: image2
           
       });
   
@@ -152,7 +153,7 @@ function initMap() {
       var marker7 = new google.maps.Marker({
           position: new google.maps.LatLng(45.474480, -73.606800),
           map: map,
-          icon: image
+          icon: image2
           
       });
       marker7.addListener('click', function() {
@@ -167,7 +168,7 @@ function initMap() {
       var marker8 = new google.maps.Marker({
           position: new google.maps.LatLng(45.528880, -73.564070),
           map: map,
-          icon: image
+          icon: image2
           
       });
   
