@@ -37,9 +37,11 @@ function checkSympt() {
             symptHave.push(symptList[i]);
         }
     } 
+
     getSympt(symptHave);
     getDiag();
     a_sync = true;
+    triageResult();
 }
 
 function getDiag() {
@@ -69,5 +71,11 @@ function getSympt(symptoms) {
 }
 
 function triageResult() {
-    document.getElementById
+    // var html_text = "<table><thead><tr><th>Most Likely Symptoms:</th><th></th></tr></thead></tbody></table>";
+    var element = document.getElementById('myModal');
+    element.innerHTML = "";
+
+    var resultsTable = document.getElementById("resultsTable");
+    // resultsTable.innerHTML += html_text;
 }
+

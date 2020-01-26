@@ -26,7 +26,7 @@ def diagnosis(symptoms):
 
     headers = {
         'x-rapidapi-host': "priaid-symptom-checker-v1.p.rapidapi.com",
-        'x-rapidapi-key': "0a97cf38bbmsh7fc6f0db2001126p1328e6jsn973f4bb67542"
+        'x-rapidapi-key': "ba2d845ec6msh7461083374f07a2p1b52bfjsnf1cab3e7786e"
         }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -53,6 +53,7 @@ def home():
         except KeyError:
             response = flask.make_response("null", 404)
         adjustHeaders(response, 'GET')
+        print('Test-GET', data)
         return response   
 
 
@@ -64,6 +65,7 @@ def school():
     if(request.method == 'POST'):
         testArr = request.json['obj']
         diagnosis(str(testArr))
+        print('Test-POST', str(testArr))
         return jsonify(testArr)
 
 
