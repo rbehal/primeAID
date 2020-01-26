@@ -38,13 +38,14 @@ function checkSympt() {
 
     getSympt(symptHave);
     getDiag();
-    a_sync = true;
+    console.log(diagnosis);
     triageResult();
 }
 
 function getDiag() {
     $.ajax({
         url: "http://127.0.0.1:5000/",
+        async: false,
         type: "GET",
         data: {time: $(this).data('timestamp')},
         success: function(response) {
@@ -83,6 +84,4 @@ function triageResult() {
     element.innerHTML = "";
     var element2 = document.getElementById('myModal');
     element2.innerHTML = innerHTMLString;
-
 }
-
