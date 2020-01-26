@@ -18,11 +18,11 @@ def adjustHeaders(response, method):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Methods', method)
 
-def diagnosis(symptoms):
-    global data
-    url = "https://priaid-symptom-checker-v1.p.rapidapi.com/diagnosis"
+def severity(symptom):
 
-    querystring = {"symptoms":symptoms,"gender":"male","year_of_birth":"1984","language":"en-gb"}
+    url = "https://priaid-symptom-checker-v1.p.rapidapi.com/redflag"
+
+    querystring = {"symptomId":symptom,"language":"en-gb"}
 
     headers = {
         'x-rapidapi-host': "priaid-symptom-checker-v1.p.rapidapi.com",
@@ -31,8 +31,23 @@ def diagnosis(symptoms):
 
     response = requests.request("GET", url, headers=headers, params=querystring)
 
+    return response
+
+def diagnosis(symptoms):
+    global data
+    url = "https://priaid-symptom-checker-v1.p.rapidapi.com/diagnosis"
+
+    querystring = {"symptoms":str(symptoms),"gender":"male","year_of_birth":"1984","language":"en-gb"}
+
+    headers = {
+        'x-rapidapi-host': "priaid-symptom-checker-v1.p.rapidapi.com",
+        'x-rapidapi-key': "ba2d845ec6msh7461083374f07a2p1b52bfjsnf1cab3e7786e"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
     response_json = response.json()
     n = len(response_json)
+
     issues = []
 
     for i in range(0, n):
@@ -40,8 +55,26 @@ def diagnosis(symptoms):
         accuracy = response_json[i]['Issue']['Accuracy']
         if (accuracy > 65):
             issues.append(top_issues)
+
+    severe_issues = []
+
+    for i in symptoms:
+        response = severity(str(i))
+        response_msg = response.json()
+        if (response_msg == ""):
+            continue; 
+        else:
+            msg = "Recommendation based on diagnosis: Please go to an Emergency Room ASAP."
+            issues.append(msg)
+            severe_issues.append(msg)
+            break;
+    
+    if (len(severe_issues) == 0):
+        issues.append("Recommendation based on diagnosis: Please see a walk-in clinic.")
+
     data = issues
     return issues
+
 
 
 @app.route('/', methods = ['GET']) 
@@ -60,13 +93,11 @@ def home():
 @app.route('/', methods = ['POST'])
 @cross_origin()
 def school():
-    # resp = flask.Response("Foo bar baz")
-    # resp.headers['Access-Control-Allow-Origin'] = '*'
     if(request.method == 'POST'):
-        testArr = request.json['obj']
-        diagnosis(str(testArr))
-        print('Test-POST', str(testArr))
-        return jsonify(testArr)
+        symptArr = request.json['obj'] # Integer Array
+        diagnosis(symptArr)
+        print('Test-POST', str(symptArr))
+        return jsonify(symptArr)
 
 
 # driver function 
