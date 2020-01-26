@@ -22,7 +22,7 @@ public class ConfirmEmail {
         frame.setTitle("primeAID Registration");
 
         JLabel titleLabel = new JLabel();
-        titleLabel.setText("ConfirmEmail");
+        titleLabel.setText("Confirm Email");
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setBackground(Color.GREEN);
         titleLabel.setOpaque(true);

@@ -12,9 +12,12 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-
 public class MedicalInterface extends JPanel{
   
+    /**
+   * 
+   */
+    private static final long serialVersionUID = 1L;
     private static ArrayList<Pair<String, String>> registrantNames = new ArrayList<>(10);;
 
     public static void MockEmails() {
@@ -38,9 +41,12 @@ public class MedicalInterface extends JPanel{
         ConfirmEmail.run();
     }
     
+    public static ArrayList<Pair<String, String>> getRegistrantList(){
+        return registrantNames;
+    }
     
     // -1 -> not found
-    public static int UserExists(String email) {
+    public static int UserExists(String email) { 
 
        Pair<String, String> patientInformation;
        
@@ -85,21 +91,16 @@ public class MedicalInterface extends JPanel{
         
         if(getInfo) {
           connection.setRequestMethod("GET");
+          connection.setRequestProperty("Authorization", "bearer " + new String(Register.token));
+          connection.setDoOutput(true);
+          System.out.println("Bearer " + Register.token);
         } else {
           connection.setRequestMethod("POST");
         }
         
-      //Set request properties
-        
-        //Use token if getting information
-        if(getInfo) {
-          connection.setRequestProperty("Authorization", "Bearer " + Register.token);
-          System.out.println("Bearer " + Register.token);
-        }
-        
+        //Set request properties
+               
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");   
-        
-        connection.setRequestProperty("Content-Length", "" + Integer.toString(urlParameters.getBytes().length));
         
         connection.setUseCaches(false);
         connection.setDoInput(true);

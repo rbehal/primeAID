@@ -6,15 +6,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.Authenticator;
 import java.net.URLEncoder;
-
-import java.io.FileReader; 
-import java.util.Iterator; 
-import java.util.Map; 
-  
-import org.json.simple.JSONArray; 
+import java.util.ArrayList;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject; 
 import org.json.simple.parser.*;
 
@@ -27,8 +25,14 @@ public class Register {
     static JLabel passwordLabel;
 
     static String response;
-    static String patientResponse;
+    static String patientResponse = new String();
     static String token;
+    
+    //private static ArrayList<Pair<String, String>> registrantNames = new ArrayList<>(MedicalInterface.getRegistrantList().size());;
+    
+    private static ArrayList<Patient> patientWaitingList = new ArrayList<>();
+    
+    private static boolean patientExists = false;
     
     public Register(String email){
         run(email);
@@ -40,7 +44,7 @@ public class Register {
         frame.setTitle("primeAID Registration");
 
         JLabel titleLabel = new JLabel();
-        titleLabel.setText("Register a spot");
+        titleLabel.setText("Register a patient");
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setBackground(Color.GREEN);
         titleLabel.setOpaque(true);
@@ -108,26 +112,67 @@ public class Register {
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setResizable(false);
+        
+        JButton returnButton = new JButton();
+        returnButton.setFont(new Font("Courier", Font.PLAIN,10));
+        returnButton.setSize(50, 60);
+        returnButton.setText("Return");
+        returnButton.setBorder(BorderFactory.createLineBorder(Color.GREEN, 4));
+        returnButton.setOpaque(true);
+        returnButton.setLocation(190,250);
+        returnButton.setVisible(true);
+        
+        panel.add(returnButton);
+        
+        //return button to User screen
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ConfirmEmail.run();
+                closeFrame();
+            }
+        });
 
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+              // Get key attached to email
                 String key = MedicalInterface.getKey(email);
                 
-                if(key.compareTo("") == 0) {
-                    errorMessage.setText("Information is incorrect");
+                if(key.equals("")) {
+                  
+                    errorMessage.setForeground(Color.RED);
+                    errorMessage.setText("Information is incorrect...");
                     errorMessage.setVisible(true);
+                    
                 } else {
                     
                     try {
+                      String username = usernameInput.getText();
+                      String password = passwordInput.getText(); 
+                      
                       setAuthentication(email, key);
                       getTokenFromJSON(response);
-                      loginButton.setEnabled(false);
                       
                       //get user information for username and password checking.
-                      getUserInformation();
-
+                      //getUserInformation();
+                      
+                      //find person and register 
+                      parseThroughResponse(patientResponse, email, username, password);
+                      
+                      if(!patientExists) {
+                        errorMessage.setForeground(Color.RED);
+                        errorMessage.setText("Credentials are incorrect...");
+                        errorMessage.setVisible(true);
+                      }
+                                        
                     } catch (ParseException e1) {
+                      // TODO Auto-generated catch block
+                      e1.printStackTrace();
+                    } catch (FileNotFoundException e1) {
+                      // TODO Auto-generated catch block
+                      e1.printStackTrace();
+                    } catch (IOException e1) {
                       // TODO Auto-generated catch block
                       e1.printStackTrace();
                     }                      
@@ -137,9 +182,7 @@ public class Register {
     }
     
     public static void setAuthentication(String email, String key) {
-      
-      String username = usernameLabel.getText();
-      String playerPassword = passwordLabel.getText();  
+       
       String urlParameters = "";
       
       try {
@@ -169,15 +212,12 @@ public class Register {
     
     public static void getUserInformation() {
       
-        String username = usernameLabel.getText();
-        String playerPassword = passwordLabel.getText();  
         String urlParameters = "";
-    
-        urlParameters = "";
         
         //Make request for authentication token
         try {
-            patientResponse = MedicalInterface.excutePost("https://sandbox030.tactiorpm7000.com/tactio_clinical_restful_api.php/1.1.5/Observation", urlParameters, true);
+            patientResponse = MedicalInterface.excutePost("https://sandbox030.tactiorpm7000.com/tactio_clinical_restful_api.php/1.1.5/Patient", urlParameters, true);
+            
             System.out.println(patientResponse);
             
         } catch (InternalException exc){
@@ -197,6 +237,110 @@ public class Register {
         // getting firstName and lastName 
         token = (String) jo.get("access_token"); 
     }
+    
+    public static void parseThroughResponse(String response, String oldEmail, String inputUsername, String inputPassword) throws ParseException, FileNotFoundException, IOException {
+      
+        Object fileReader = new JSONParser().parse(new FileReader("./src/primeAID/expectedOutcome.json")); 
+        
+        JSONObject resource, resourceName, resourceEmail, nameIndices, patientTitle, telecom;
+       
+        String patientFamilyName;
+        String patientFirstName;
+        
+        //Email found in database for comparison
+        String finalEmail;
+        
+        
+        // typecasting obj to JSONObject 
+        JSONObject jo = (JSONObject) fileReader; 
+        
+        int incrementor = 0;
+
+        JSONArray entryname, nameName, givenName, telecomList;
+        entryname = (JSONArray) jo.get("entry");
+        
+        for(int i = 0; i < entryname.size(); i++) {
+          
+            //Set to json
+            resource = (JSONObject) entryname.get(i);
+            
+            //get name of individual
+            resourceName = (JSONObject) resource.get("resource");
+            resourceEmail = (JSONObject) resource.get("resource");
+            
+            //get first and last name
+            nameName = (JSONArray) resourceName.get("name");
+            telecomList = (JSONArray) resourceEmail.get("telecom");
+            
+            //GGet index location of name
+            nameIndices = (JSONObject) nameName.get(0);
+            telecom = (JSONObject) telecomList.get(0);
+            //patientTitle = (JSONObject) name.get("family");
+            
+            givenName = (JSONArray) nameIndices.get("given");
+            
+            //Final list
+            
+            finalEmail = (String) telecom.get("value");
+            patientFirstName = (String) givenName.get(0);
+            patientFamilyName = (String) nameIndices.get("family");
+            
+            
+          //Check if user exists
+            checkUserCredentials(patientFirstName, patientFamilyName, finalEmail, oldEmail, inputUsername, inputPassword);
+            
+            
+        }  
+    }
+    
+    public static void checkUserCredentials(String username, String password, String newEmail, String oldEmail, String inputUsername, String inputPassword){
+      
+        System.out.println(username + " | " + inputUsername + " | " + password + " | " + inputPassword + " | " + newEmail + " | " + oldEmail);
+        System.out.println(patientWaitingList.size());
+        for(int i = 0; i < MedicalInterface.getRegistrantList().size(); i++) {
+            
+            // make sure name, password and email all matc to database
+            
+            if(patientExists) break;
+            
+            if(username.equals(inputUsername) && password.equals(inputPassword) && newEmail.equals(oldEmail)) {
+                //Create a patient in registration
+                System.out.println(patientWaitingList.size());
+                //Check to make sure the patient doesn't already exist
+                if(patientWaitingList.size() == 0) {
+                    patientWaitingList.add(new Patient(username, password));
+                    patientExists = true;
+                    
+                    errorMessage.setForeground(Color.GREEN);
+                    errorMessage.setText("Successfully added patient to queue...");
+                    errorMessage.setVisible(true);
+                    
+                    break;
+                }
+              
+                for(Patient patient : patientWaitingList) {
+                    if(!patient.getUsername().equals(username)|| !patient.getPassword().equals(password)) {
+                      
+                      //Add patient to list
+                        patientWaitingList.add(new Patient(username, password));
+                        patientExists = true;
+                        
+                        errorMessage.setForeground(Color.GREEN);
+                        errorMessage.setText("Successfully added patient to queue...");
+                        errorMessage.setVisible(true);
+                        
+                        break;
+                      
+                    } else {
+                        errorMessage.setForeground(Color.RED);
+                        errorMessage.setText("Patient already registered...");
+                        errorMessage.setVisible(true);
+                    }
+                }
+            } 
+        } 
+    }
+    
     
     public static void closeFrame()
     {
