@@ -41,7 +41,7 @@ function initMap() {
   
     
       var infowindow = new google.maps.InfoWindow({
-          content: "CLINIQUE MÉDICALE DU SUD-OUEST"
+          content: 'Clinique Medicale Du Sud-Ouest<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3 <br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         }); 
   
       var marker = new google.maps.Marker({
@@ -57,7 +57,7 @@ function initMap() {
         });
   
         var infowindow1 = new google.maps.InfoWindow({
-          content: "CLINIQUE MÉDICALE PLATEAU MONT-ROYAL"
+          content: 'CLINIQUE MÉDICALE PLATEAU MONT-ROYAL<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3 <br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
       
       var marker1 = new google.maps.Marker({
@@ -72,7 +72,7 @@ function initMap() {
   
   
       var infowindow2 = new google.maps.InfoWindow({
-          content: "MÉDICO-CENTRE MONT-ROYAL - CLINIQUE DU VOYAGEUR"
+          content: 'MÉDICO-CENTRE MONT-ROYAL - CLINIQUE DU VOYAGEUR<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3 <br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
       
       var marker2 = new google.maps.Marker({
@@ -87,7 +87,7 @@ function initMap() {
   
   
       var infowindow3 = new google.maps.InfoWindow({
-          content: "CLINIQUE MÉDICALE DE LA CITÉ"
+          content: 'CLINIQUE MÉDICALE DE LA CITÉ<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker3 = new google.maps.Marker({
@@ -103,7 +103,7 @@ function initMap() {
   
       
       var infowindow4 = new google.maps.InfoWindow({
-          content: "GROUPE SANTÉ WESTMOUNT SQUARE"
+          content: 'GROUPE SANTÉ WESTMOUNT SQUARE<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
       var marker4 = new google.maps.Marker({
           position: new google.maps.LatLng(45.486860, -73.588640),
@@ -118,7 +118,7 @@ function initMap() {
   
   
       var infowindow5 = new google.maps.InfoWindow({
-          content: "CLINIQUE SANS RENDEZ-VOUS HERZL"
+          content: 'CLINIQUE SANS RENDEZ-VOUS HERZL<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
       var marker5 = new google.maps.Marker({
           position: new google.maps.LatLng(45.499480, -73.630020),
@@ -132,7 +132,7 @@ function initMap() {
         });
   
         var infowindow6 = new google.maps.InfoWindow({
-          content: "CLINIQUE MÉDICALE MÉTROMÉDIC CENTRE-VILLE"
+          content: 'CLINIQUE MÉDICALE MÉTROMÉDIC CENTRE-VILLE<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker6 = new google.maps.Marker({
@@ -148,7 +148,7 @@ function initMap() {
   
   
         var infowindow7 = new google.maps.InfoWindow({
-          content: "CENTRE MÉDICALE QUEEN ÉLIZABETH URGENT CARE"
+          content: 'CENTRE MÉDICALE QUEEN ÉLIZABETH URGENT CARE<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
       var marker7 = new google.maps.Marker({
           position: new google.maps.LatLng(45.474480, -73.606800),
@@ -162,7 +162,7 @@ function initMap() {
   
   
         var infowindow8 = new google.maps.InfoWindow({
-          content: "CLINIQUE MÉDICALE 1851"
+          content: 'CLINIQUE MÉDICALE 1851<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker8 = new google.maps.Marker({
@@ -178,7 +178,7 @@ function initMap() {
   
         
       var infowindow9 = new google.maps.InfoWindow({
-          content: "Montreal General Hospital"
+          content: 'Montreal General Hospital<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker9 = new google.maps.Marker({
@@ -194,7 +194,7 @@ function initMap() {
   
       
         var infowindow10 = new google.maps.InfoWindow({
-          content: "Jewish General Hospital"
+          content: 'Jewish General Hospital<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker10 = new google.maps.Marker({
@@ -210,7 +210,7 @@ function initMap() {
   
   
         var infowindow11 = new google.maps.InfoWindow({
-          content: "McGill University Health Centre"
+          content: 'McGill University Health Centre<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker11 = new google.maps.Marker({
@@ -225,7 +225,7 @@ function initMap() {
         });
   
         var infowindow12 = new google.maps.InfoWindow({
-          content: "St. Mary's Hospital"
+          content: 'St. Marys Hospital<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker12 = new google.maps.Marker({
@@ -241,7 +241,7 @@ function initMap() {
   
   
         var infowindow13 = new google.maps.InfoWindow({
-          content: "Shriners Hospital for Children Canada"
+          content: 'Shriners Hospital for Children Canada<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
   
@@ -258,7 +258,7 @@ function initMap() {
   
       
         var infowindow14 = new google.maps.InfoWindow({
-          content: "CHUM"
+          content: 'CHUM<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker14 = new google.maps.Marker({
@@ -273,7 +273,7 @@ function initMap() {
         });
   
         var infowindow15 = new google.maps.InfoWindow({
-          content: "Santa Cabrini Hospital"
+          content: 'Santa Cabrini Hospital<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker15 = new google.maps.Marker({
@@ -288,7 +288,7 @@ function initMap() {
         });
   
         var infowindow16 = new google.maps.InfoWindow({
-          content: "Jean Talon Hospital"
+          content: 'Jean Talon Hospital<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker16 = new google.maps.Marker({
@@ -304,7 +304,7 @@ function initMap() {
   
   
         var infowindow17 = new google.maps.InfoWindow({
-          content: "Fleury Hospital"
+          content: 'Fleury Hospital<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker17 = new google.maps.Marker({
@@ -319,7 +319,7 @@ function initMap() {
         });
   
         var infowindow18 = new google.maps.InfoWindow({
-          content: "Hopital du Sacre-Coeur de Montreal"
+          content: 'Hopital du Sacre-Coeur de Montreal<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br><br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
   
@@ -335,7 +335,7 @@ function initMap() {
         });
   
         var infowindow19 = new google.maps.InfoWindow({
-          content: "Lachine Hospital"
+          content: 'Lachine Hospital<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker19 = new google.maps.Marker({
@@ -349,7 +349,7 @@ function initMap() {
         }); 
   
         var infowindow20 = new google.maps.InfoWindow({
-          content: "CHU Sainte-Justine"
+          content: 'CHU Sainte-Justine<br>Current Patients: 33<br>Average Wait Time: 1.5 hours<br>Doctors Available: 3<br> <br> &emsp; &emsp; &emsp; <button type="submit" class="btn btn-primary">Register</button>'
         });
   
       var marker20 = new google.maps.Marker({
