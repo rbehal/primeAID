@@ -323,11 +323,9 @@ public class Register {
                     break;
                 } else {patientExists = false;}
               
-                for(Patient patient : patientWaitingList) {
-                  
-                    //No replicates
-                    if(!patient.getUsername().equals(username) || !patient.getPassword().equals(password)) {
-                      
+                
+                if(!checkIfExists(username, password)) {
+
                       //Add patient to list
                         patientWaitingList.add(new Patient(username, password));
                         
@@ -351,6 +349,14 @@ public class Register {
                 if(patientExists) break;
             } 
         } 
+    
+    
+    public static boolean checkIfExists(String username, String password) {
+        for(Patient patient : patientWaitingList) {
+            //No replicates
+            if(patient.getUsername().equals(username) && patient.getPassword().equals(password)) return true;
+        }
+        return false;
     }
     
     
