@@ -69,11 +69,20 @@ function getSympt(symptoms) {
 }
 
 function triageResult() {
-    // var html_text = "<table><thead><tr><th>Most Likely Symptoms:</th><th></th></tr></thead></tbody></table>";
-    var element = document.getElementById('myModal');
-    element.innerHTML = "";
+    var innerHTMLString = "<table> <tr> <th> <style> text-align: center </style>Prioritised Diagnostics</th> </tr>"
 
-    var resultsTable = document.getElementById("resultsTable");
-    // resultsTable.innerHTML += html_text;
+    for (var i = 0; i<diagnosis.length; i++) {
+        if (i == diagnosis.length - 1) {
+            innerHTMLString += "<tr> <td> " + diagnosis[i] + " </td> </tr> </table>"; 
+        }
+        else {
+            innerHTMLString += "<tr> <td> " + i + ") " + diagnosis[i] + " </td> </tr>"; 
+        }
+    }
+    var element = document.getElementById('modalBack');
+    element.innerHTML = "";
+    var element2 = document.getElementById('myModal');
+    element2.innerHTML = innerHTMLString;
+
 }
 
