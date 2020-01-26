@@ -10,8 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&libraries=places"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&callback=initMap"
-    async defer></script>
+    
     
     <script>
         $(document).ready(function(){
@@ -34,8 +33,10 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" placeholder="Search for symptoms..." title="Type in a name">
-                            <ul id="myUL">
+                            <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" placeholder="Search for symptoms..." title="Type in a name"> 
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="checkSympt()">Enter</button>
+                              <ul id="myUL">
                                 <li><a href="#">Abdominal guarding    <input type="checkbox" id="188"></a></li>
                                 <li><a href="#">Abdominal pain    <input type="checkbox" id="10"></a></li>
                                 <li><a href="#">Abdominal pain associated with menstruation    <input type="checkbox" id="223"></a></li>
@@ -307,9 +308,10 @@
                                 <li><a href="#">Wound    <input type="checkbox" id="187"></a></li>
                                 <li><a href="#">Yellow colored skin    <input type="checkbox" id="105"></a></li>
                                 <li><a href="#">Yellowish discoloration of the white part of the eye    <input type="checkbox" id="106"></a></li>
-                              </ul>
-                        </div>
-                        <button type="submit" class="btn btn-primary" onclick="checkSympt()">Enter</button>
+                             </ul>
+                        </input>
+                    </div>                    
+                    <button type="submit" class="btn btn-primary">Enter</button>
                     </form>
                 </div>
             </div>
@@ -320,6 +322,8 @@
         </div>
     <script src="./maps.js"></script>
     <script src="./search.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&callback=initMap"
+    async defer></script>
   </body onload="hideSympt()">
 </html> 
 
