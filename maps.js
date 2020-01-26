@@ -40,134 +40,134 @@ function initMap() {
     var marker = new google.maps.Marker({
     position: new google.maps.LatLng(45.460076, -73.576396),
     map: map,
-    label: "CLINIQUE MÉDICALE DU SUD-OUEST"
+    label: {text: "CLINIQUE MÉDICALE DU SUD-OUEST", color: "white"}
     });
     var marker1 = new google.maps.Marker({
     position: new google.maps.LatLng(45.530458, -73.576428),
     map: map,
-    label: "CLINIQUE MÉDICALE PLATEAU MONT-ROYAL"
+    label: {text: "CLINIQUE MÉDICALE PLATEAU MONT-ROYAL", color: "white"}
     });
     var marker2 = new google.maps.Marker({
         position: new google.maps.LatLng(45.53426, -73.576691),
         map: map,
-        label: "MÉDICO-CENTRE MONT-ROYAL - CLINIQUE DU VOYAGEUR"
+        label: {text: "MÉDICO-CENTRE MONT-ROYAL - CLINIQUE DU VOYAGEUR", color: "white"}
     });
     var marker3 = new google.maps.Marker({
         position: new google.maps.LatLng(45.488869, -73.586067),
         map: map,
-        label: "CLINIQUE MÉDICALE DE LA CITÉ"
+        label: {text: "CLINIQUE MÉDICALE DE LA CITÉ", color: "white"}
         
     });
 
     var marker4 = new google.maps.Marker({
         position: new google.maps.LatLng(45.486860, -73.588640),
         map: map,
-        label: "GROUPE SANTÉ WESTMOUNT SQUARE"
+        label: {text: "GROUPE SANTÉ WESTMOUNT SQUARE", color: "white"}
         
     });
 
     var marker5 = new google.maps.Marker({
         position: new google.maps.LatLng(45.499480, -73.630020),
         map: map,
-        label: "CLINIQUE SANS RENDEZ-VOUS HERZL"
+        label: {text: "CLINIQUE SANS RENDEZ-VOUS HERZL", color: "white"}
         
     });
 
     var marker6 = new google.maps.Marker({
         position: new google.maps.LatLng(45.500420, -73.577980),
         map: map,
-        label: "CLINIQUE MÉDICALE MÉTROMÉDIC CENTRE-VILLE"
+        label: {text: "CLINIQUE MÉDICALE MÉTROMÉDIC CENTRE-VILLE", color: "white"}
         
     });
 
     var marker7 = new google.maps.Marker({
         position: new google.maps.LatLng(45.474480, -73.606800),
         map: map,
-        label: "CENTRE MÉDICALE QUEEN ÉLIZABETH URGENT CARE"
+        label: {text: "CENTRE MÉDICALE QUEEN ÉLIZABETH URGENT CARE", color: "white"}
         
     });
 
     var marker8 = new google.maps.Marker({
         position: new google.maps.LatLng(45.528880, -73.564070),
         map: map,
-        label: "CLINIQUE MÉDICALE 1851"
+        label: {text: "CLINIQUE MÉDICALE 1851", color: "white"}
         
     });
 
     var marker9 = new google.maps.Marker({
         position: new google.maps.LatLng(45.496985, -73.588799),
         map: map,
-        label: "Montreal General Hospital"
+        label: {text: "Montreal General Hospital", color: "white"}
         
     });
 
     var marker10 = new google.maps.Marker({
         position: new google.maps.LatLng(45.49696, -73.630211),
         map: map,
-        label: "Jewish General Hospital"
+        label: {text: "Jewish General Hospital", color: "white"}
         
     }); 
 
     var marker11 = new google.maps.Marker({
         position: new google.maps.LatLng(45.472852, -73.600969),
         map: map,
-        label: "McGill University Health Centre"
+        label: {text: "McGill University Health Centre", color: "white"}
         
     }); 
 
     var marker12 = new google.maps.Marker({
         position: new google.maps.LatLng(45.494896, -73.623838),
         map: map,
-        label: "St. Mary's Hospital"
+        label: {text: "St. Mary's Hospital", color: "white"}
         
     }); 
 
     var marker13 = new google.maps.Marker({
         position: new google.maps.LatLng(45.471813, -73.601811),
         map: map,
-        label: "Shriners Hospital for Children Canada"
+        label: {text: "Shriners Hospital for Children Canada", color: "white"}
         
     }); 
 
     var marker14 = new google.maps.Marker({
         position: new google.maps.LatLng(45.511197, -73.557284),
         map: map,
-        label: "CHUM"
+        label: {text: "CHUM", color: "white"}
         
     }); 
 
     var marker15 = new google.maps.Marker({
         position: new google.maps.LatLng(45.579533, -73.571416),
         map: map,
-        label: "Santa Cabrini Hospital"
+        label: {text: "Santa Cabrini Hospital", color: "white"}
         
     }); 
 
     var marker16 = new google.maps.Marker({
         position: new google.maps.LatLng(45.545725, -73.609308),
         map: map,
-        label: "Jean Talon Hospital"
+        label: {text: "Jean Talon Hospital", color: "white"}
         
     }); 
 
     var marker17 = new google.maps.Marker({
         position: new google.maps.LatLng(45.571887, -73.649903),
         map: map,
-        label: "Fleury Hospital"
+        label: {text: "Fleury Hospital", color: "white"}
         
     }); 
 
     var marker18 = new google.maps.Marker({
         position: new google.maps.LatLng(45.532519, -73.714105),
         map: map,
-        label: "Hopital du Sacre-Coeur de Montreal"
+        label: {text: "Hopital du Sacre-Coeur de Montreal", color: "white"}
         
     }); 
 
     var marker19 = new google.maps.Marker({
         position: new google.maps.LatLng(45.441159, -73.677073),
         map: map,
-        label: "Lachine Hospital"
+        label: {text: "Lachine Hospital", color: "white"}
         
     }); 
 
