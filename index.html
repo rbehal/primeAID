@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>primeAID</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="./main.css">
@@ -10,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&libraries=places"></script> -->
-    
+    <link rel="icon" href="./media/favicon.ico" type="image/x-icon">
     
     <script>
         $(document).ready(function(){
@@ -316,13 +317,23 @@
             </div>
         </div>
     </div>
-        <div class="bg">
-            <div id="map" class="container"></div>        
-        </div>
+    
+    
+    <div class="bg">       
+        
+            <div class ="wrapper">
+            <button type="button" class="btn btn-info btn-lg btn-lg" data-toggle="modal" data-target="#myModal">Click to enter symptoms</button>
+            </div>  
+
+            <div class="logo"></div>
+        
+    </div>
+    <div id="map"></div>
     <script src="./maps.js"></script>
     <script src="./search.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&callback=initMap"
     async defer></script>
+    <script src="./markerclusterer_compiled.js"></script>
   </body onload="hideSympt()">
 </html> 
 
