@@ -309,8 +309,6 @@ public class Register {
             // make sure name, password and email all matc to database
             
             if(username.equals(inputUsername) && password.equals(inputPassword) && newEmail.equals(oldEmail)) {
-                //Create a patient in registration
-                System.out.println(patientWaitingList.size());
                 //Check to make sure the patient doesn't already exist
                 if(patientWaitingList.size() == 0) {
                     patientWaitingList.add(new Patient(username, password));
@@ -328,7 +326,7 @@ public class Register {
 
                       //Add patient to list
                         patientWaitingList.add(new Patient(username, password));
-                        
+                        checkForUpdate();
                         patientExists = true;
                         
                         errorMessage.setForeground(Color.GREEN);
@@ -357,6 +355,13 @@ public class Register {
             if(patient.getUsername().equals(username) && patient.getPassword().equals(password)) return true;
         }
         return false;
+    }
+    
+    public static void checkForUpdate() {
+      for(Patient patient : patientWaitingList) {
+        //No replicates
+        System.out.println(patient.getUsername() + " | " + patient.getPassword() + " | " + patient.getArrivalTime());
+      }
     }
     
     
