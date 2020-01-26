@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>primeAID</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet"
@@ -10,45 +11,329 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&libraries=places"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&callback=initMap"
-    async defer></script>
-    
-    <script>
-        $(document).ready(function(){
-            $("#myModal").modal('show');
-        });
-    </script>
+    <link rel="icon" href="./media/favicon.ico" type="image/x-icon">
 
   </head>
 
-  <body>
+
+  <body onload="hideSympt()">
+    <div id="resultsTable"></div>
 
     <div id="myModal" class="modal fade">
+        <script>
+            $(document).ready(function(){
+                $("#myModal").modal('show');
+            });
+        </script>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Please enter your symptoms</h4>
+                    <h4 class="modal-title">What are your symptoms?</h4>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Symptoms">
+                            <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" placeholder="Search for symptoms..." title="Type in a name"> 
                         </div>
-                        <button type="submit" class="btn btn-primary">Enter</button>
+                        <button type="submit" class="btn btn-primary" onclick="checkSympt()">Enter</button>
+                              <ul id="myUL">
+                                <li><a href="#">Abdominal guarding    <input type="checkbox" id="188"></a></li>
+                                <li><a href="#">Abdominal pain    <input type="checkbox" id="10"></a></li>
+                                <li><a href="#">Abdominal pain associated with menstruation    <input type="checkbox" id="223"></a></li>
+                                <li><a href="#">Absence of a pulse    <input type="checkbox" id="984"></a></li>
+                                <li><a href="#">Aggressiveness    <input type="checkbox" id="974"></a></li>
+                                <li><a href="#">Agitation    <input type="checkbox" id="981"></a></li>
+                                <li><a href="#">Ankle deformity    <input type="checkbox" id="996"></a></li>
+                                <li><a href="#">Ankle swelling    <input type="checkbox" id="147"></a></li>
+                                <li><a href="#">Anxiety    <input type="checkbox" id="238"></a></li>
+                                <li><a href="#">Arm swelling    <input type="checkbox" id="971"></a></li>
+                                <li><a href="#">Back deformity    <input type="checkbox" id="998"></a></li>
+                                <li><a href="#">Back pain    <input type="checkbox" id="104"></a></li>
+                                <li><a href="#">Black stools    <input type="checkbox" id="180"></a></li>
+                                <li><a href="#">Blackening of vision    <input type="checkbox" id="57"></a></li>
+                                <li><a href="#">Blackhead    <input type="checkbox" id="24"></a></li>
+                                <li><a href="#">Bleeding from vagina    <input type="checkbox" id="284"></a></li>
+                                <li><a href="#">Bleeding in the conjunctiva of the eye    <input type="checkbox" id="176"></a></li>
+                                <li><a href="#">Bloated feeling in the stomach    <input type="checkbox" id="48"></a></li>
+                                <li><a href="#">Blood in stool    <input type="checkbox" id="190"></a></li>
+                                <li><a href="#">Bloody cough    <input type="checkbox" id="233"></a></li>
+                                <li><a href="#">Blue colored skin    <input type="checkbox" id="991"></a></li>
+                                <li><a href="#">Blue spot on skin    <input type="checkbox" id="240"></a></li>
+                                <li><a href="#">Blurred vision    <input type="checkbox" id="77"></a></li>
+                                <li><a href="#">Bold area among hair on the head    <input type="checkbox" id="239"></a></li>
+                                <li><a href="#">Bone fracture    <input type="checkbox" id="156"></a></li>
+                                <li><a href="#">Breathing-related pains    <input type="checkbox" id="250"></a></li>
+                                <li><a href="#">Brittleness of nails    <input type="checkbox" id="979"></a></li>
+                                <li><a href="#">Bulging abdominal wall    <input type="checkbox" id="192"></a></li>
+                                <li><a href="#">Burning eyes    <input type="checkbox" id="75"></a></li>
+                                <li><a href="#">Burning in the throat    <input type="checkbox" id="46"></a></li>
+                                <li><a href="#">Burning nose    <input type="checkbox" id="288"></a></li>
+                                <li><a href="#">Burning sensation when urinating    <input type="checkbox" id="107"></a></li>
+                                <li><a href="#">Changes in the nails    <input type="checkbox" id="91"></a></li>
+                                <li><a href="#">Cheek swelling    <input type="checkbox" id="170"></a></li>
+                                <li><a href="#">Chest pain    <input type="checkbox" id="17"></a></li>
+                                <li><a href="#">Chest tightness    <input type="checkbox" id="31"></a></li>
+                                <li><a href="#">Chills    <input type="checkbox" id="175"></a></li>
+                                <li><a href="#">Coarsening of the skin structure    <input type="checkbox" id="218"></a></li>
+                                <li><a href="#">Cold feet    <input type="checkbox" id="89"></a></li>
+                                <li><a href="#">Cold hands    <input type="checkbox" id="978"></a></li>
+                                <li><a href="#">Cold sweats    <input type="checkbox" id="139"></a></li>
+                                <li><a href="#">Cough    <input type="checkbox" id="15"></a></li>
+                                <li><a href="#">Cough with sputum    <input type="checkbox" id="228"></a></li>
+                                <li><a href="#">Cramps    <input type="checkbox" id="94"></a></li>
+                                <li><a href="#">Cravings    <input type="checkbox" id="49"></a></li>
+                                <li><a href="#">Crusting    <input type="checkbox" id="134"></a></li>
+                                <li><a href="#">Curvature of the spine    <input type="checkbox" id="260"></a></li>
+                                <li><a href="#">Dark urine    <input type="checkbox" id="108"></a></li>
+                                <li><a href="#">Decreased urine stream    <input type="checkbox" id="163"></a></li>
+                                <li><a href="#">Delayed start to urination    <input type="checkbox" id="165"></a></li>
+                                <li><a href="#">Diarrhea    <input type="checkbox" id="50"></a></li>
+                                <li><a href="#">Difficult defecation    <input type="checkbox" id="79"></a></li>
+                                <li><a href="#">Difficulty in finding words    <input type="checkbox" id="126"></a></li>
+                                <li><a href="#">Difficulty in speaking    <input type="checkbox" id="98"></a></li>
+                                <li><a href="#">Difficulty in swallowing    <input type="checkbox" id="93"></a></li>
+                                <li><a href="#">Difficulty to concentrate    <input type="checkbox" id="53"></a></li>
+                                <li><a href="#">Discoloration of nails    <input type="checkbox" id="216"></a></li>
+                                <li><a href="#">Disorientation regarding time or place    <input type="checkbox" id="128"></a></li>
+                                <li><a href="#">Distended abdomen    <input type="checkbox" id="989"></a></li>
+                                <li><a href="#">Dizziness    <input type="checkbox" id="207"></a></li>
+                                <li><a href="#">Double vision    <input type="checkbox" id="71"></a></li>
+                                <li><a href="#">Double vision, acute-onset    <input type="checkbox" id="270"></a></li>
+                                <li><a href="#">Dribbling after urination    <input type="checkbox" id="162"></a></li>
+                                <li><a href="#">Drooping eyelid    <input type="checkbox" id="244"></a></li>
+                                <li><a href="#">Drowsiness    <input type="checkbox" id="43"></a></li>
+                                <li><a href="#">Dry eyes    <input type="checkbox" id="273"></a></li>
+                                <li><a href="#">Dry mouth    <input type="checkbox" id="272"></a></li>
+                                <li><a href="#">Dry skin    <input type="checkbox" id="151"></a></li>
+                                <li><a href="#">Earache    <input type="checkbox" id="87"></a></li>
+                                <li><a href="#">Early satiety    <input type="checkbox" id="92"></a></li>
+                                <li><a href="#">Eye blinking    <input type="checkbox" id="242"></a></li>
+                                <li><a href="#">Eye pain    <input type="checkbox" id="287"></a></li>
+                                <li><a href="#">Eye redness    <input type="checkbox" id="33"></a></li>
+                                <li><a href="#">Eyelid swelling    <input type="checkbox" id="208"></a></li>
+                                <li><a href="#">Eyelids sticking together    <input type="checkbox" id="209"></a></li>
+                                <li><a href="#">Face pain    <input type="checkbox" id="219"></a></li>
+                                <li><a href="#">Facial paralysis    <input type="checkbox" id="246"></a></li>
+                                <li><a href="#">Facial swelling    <input type="checkbox" id="970"></a></li>
+                                <li><a href="#">Fast, deepened breathing    <input type="checkbox" id="153"></a></li>
+                                <li><a href="#">Fatty defecation    <input type="checkbox" id="83"></a></li>
+                                <li><a href="#">Feeling faint    <input type="checkbox" id="982"></a></li>
+                                <li><a href="#">Feeling of foreign body in the eye    <input type="checkbox" id="76"></a></li>
+                                <li><a href="#">Feeling of pressure in the ear    <input type="checkbox" id="86"></a></li>
+                                <li><a href="#">Feeling of residual urine    <input type="checkbox" id="164"></a></li>
+                                <li><a href="#">Feeling of tension in the legs    <input type="checkbox" id="145"></a></li>
+                                <li><a href="#">Fever    <input type="checkbox" id="11"></a></li>
+                                <li><a href="#">Finger deformity    <input type="checkbox" id="995"></a></li>
+                                <li><a href="#">Flaking skin    <input type="checkbox" id="214"></a></li>
+                                <li><a href="#">Flaking skin on the head    <input type="checkbox" id="245"></a></li>
+                                <li><a href="#">Flatulence    <input type="checkbox" id="154"></a></li>
+                                <li><a href="#">Foot pain    <input type="checkbox" id="255"></a></li>
+                                <li><a href="#">Foot swelling    <input type="checkbox" id="1002"></a></li>
+                                <li><a href="#">Forgetfulness    <input type="checkbox" id="125"></a></li>
+                                <li><a href="#">Formation of blisters on a skin area    <input type="checkbox" id="62"></a></li>
+                                <li><a href="#">Foul smelling defecation    <input type="checkbox" id="84"></a></li>
+                                <li><a href="#">Frequent urination    <input type="checkbox" id="59"></a></li>
+                                <li><a href="#">Genital warts    <input type="checkbox" id="110"></a></li>
+                                <li><a href="#">Hair loss    <input type="checkbox" id="152"></a></li>
+                                <li><a href="#">Hallucination    <input type="checkbox" id="976"></a></li>
+                                <li><a href="#">Halo    <input type="checkbox" id="72"></a></li>
+                                <li><a href="#">Hand pain    <input type="checkbox" id="186"></a></li>
+                                <li><a href="#">Hand swelling    <input type="checkbox" id="148"></a></li>
+                                <li><a href="#">Hard defecation    <input type="checkbox" id="80"></a></li>
+                                <li><a href="#">Hardening of the skin    <input type="checkbox" id="184"></a></li>
+                                <li><a href="#">Headache    <input type="checkbox" id="9"></a></li>
+                                <li><a href="#">Hearing loss    <input type="checkbox" id="206"></a></li>
+                                <li><a href="#">Heart murmur    <input type="checkbox" id="985"></a></li>
+                                <li><a href="#">Heartburn    <input type="checkbox" id="45"></a></li>
+                                <li><a href="#">Hiccups    <input type="checkbox" id="122"></a></li>
+                                <li><a href="#">Hip deformity    <input type="checkbox" id="993"></a></li>
+                                <li><a href="#">Hip pain    <input type="checkbox" id="196"></a></li>
+                                <li><a href="#">Hoarseness    <input type="checkbox" id="121"></a></li>
+                                <li><a href="#">Hot flushes    <input type="checkbox" id="149"></a></li>
+                                <li><a href="#">Immobilization    <input type="checkbox" id="197"></a></li>
+                                <li><a href="#">Impaired balance    <input type="checkbox" id="120"></a></li>
+                                <li><a href="#">Impaired hearing    <input type="checkbox" id="90"></a></li>
+                                <li><a href="#">Impaired light-dark adaptation    <input type="checkbox" id="70"></a></li>
+                                <li><a href="#">Impairment of male potency    <input type="checkbox" id="113"></a></li>
+                                <li><a href="#">Incomplete defecation    <input type="checkbox" id="81"></a></li>
+                                <li><a href="#">Increased appetite    <input type="checkbox" id="131"></a></li>
+                                <li><a href="#">Increased drive    <input type="checkbox" id="262"></a></li>
+                                <li><a href="#">Increased salivation    <input type="checkbox" id="204"></a></li>
+                                <li><a href="#">Increased thirst    <input type="checkbox" id="40"></a></li>
+                                <li><a href="#">Increased touch sensitivity    <input type="checkbox" id="220"></a></li>
+                                <li><a href="#">Increased urine quantity    <input type="checkbox" id="39"></a></li>
+                                <li><a href="#">Involuntary movements    <input type="checkbox" id="257"></a></li>
+                                <li><a href="#">Irregular heartbeat    <input type="checkbox" id="986"></a></li>
+                                <li><a href="#">Irregular mole    <input type="checkbox" id="65"></a></li>
+                                <li><a href="#">Itching eyes    <input type="checkbox" id="73"></a></li>
+                                <li><a href="#">Itching in the ear    <input type="checkbox" id="88"></a></li>
+                                <li><a href="#">Itching in the mouth or throat    <input type="checkbox" id="973"></a></li>
+                                <li><a href="#">Itching in the nose    <input type="checkbox" id="96"></a></li>
+                                <li><a href="#">Itching of skin    <input type="checkbox" id="21"></a></li>
+                                <li><a href="#">Itching of the anus    <input type="checkbox" id="999"></a></li>
+                                <li><a href="#">Itching on head    <input type="checkbox" id="247"></a></li>
+                                <li><a href="#">Itching or burning in the genital area    <input type="checkbox" id="268"></a></li>
+                                <li><a href="#">Joint effusion    <input type="checkbox" id="194"></a></li>
+                                <li><a href="#">Joint instability    <input type="checkbox" id="198"></a></li>
+                                <li><a href="#">Joint pain    <input type="checkbox" id="27"></a></li>
+                                <li><a href="#">Joint redness    <input type="checkbox" id="230"></a></li>
+                                <li><a href="#">Joint swelling    <input type="checkbox" id="193"></a></li>
+                                <li><a href="#">Joylessness    <input type="checkbox" id="47"></a></li>
+                                <li><a href="#">Knee deformity    <input type="checkbox" id="994"></a></li>
+                                <li><a href="#">Knee pain    <input type="checkbox" id="256"></a></li>
+                                <li><a href="#">Leg cramps    <input type="checkbox" id="146"></a></li>
+                                <li><a href="#">Leg swelling    <input type="checkbox" id="231"></a></li>
+                                <li><a href="#">Leg ulcer    <input type="checkbox" id="143"></a></li>
+                                <li><a href="#">Less than 3 defecations per week    <input type="checkbox" id="82"></a></li>
+                                <li><a href="#">Limited mobility of the ankle    <input type="checkbox" id="992"></a></li>
+                                <li><a href="#">Limited mobility of the back    <input type="checkbox" id="167"></a></li>
+                                <li><a href="#">Limited mobility of the fingers    <input type="checkbox" id="178"></a></li>
+                                <li><a href="#">Limited mobility of the hip    <input type="checkbox" id="1000"></a></li>
+                                <li><a href="#">Limited mobility of the leg    <input type="checkbox" id="195"></a></li>
+                                <li><a href="#">Lip swelling    <input type="checkbox" id="35"></a></li>
+                                <li><a href="#">Lockjaw    <input type="checkbox" id="205"></a></li>
+                                <li><a href="#">Loss of eye lashes    <input type="checkbox" id="210"></a></li>
+                                <li><a href="#">Lower abdominal pain    <input type="checkbox" id="174"></a></li>
+                                <li><a href="#">Lower-back pain    <input type="checkbox" id="263"></a></li>
+                                <li><a href="#">Lump in the breast    <input type="checkbox" id="261"></a></li>
+                                <li><a href="#">Malposition of the testicles    <input type="checkbox" id="266"></a></li>
+                                <li><a href="#">Marked veins    <input type="checkbox" id="232"></a></li>
+                                <li><a href="#">Memory gap    <input type="checkbox" id="235"></a></li>
+                                <li><a href="#">Menstruation disorder    <input type="checkbox" id="112"></a></li>
+                                <li><a href="#">Missed period    <input type="checkbox" id="123"></a></li>
+                                <li><a href="#">Moist and softened skin    <input type="checkbox" id="215"></a></li>
+                                <li><a href="#">Mood swings    <input type="checkbox" id="85"></a></li>
+                                <li><a href="#">Morning stiffness    <input type="checkbox" id="983"></a></li>
+                                <li><a href="#">Mouth pain    <input type="checkbox" id="135"></a></li>
+                                <li><a href="#">Mouth ulcers    <input type="checkbox" id="97"></a></li>
+                                <li><a href="#">Muscle pain    <input type="checkbox" id="177"></a></li>
+                                <li><a href="#">Muscle stiffness    <input type="checkbox" id="119"></a></li>
+                                <li><a href="#">Muscle weakness    <input type="checkbox" id="987"></a></li>
+                                <li><a href="#">Muscular atrophy in the leg    <input type="checkbox" id="252"></a></li>
+                                <li><a href="#">Muscular atrophy of the arm    <input type="checkbox" id="202"></a></li>
+                                <li><a href="#">Muscular weakness in the arm    <input type="checkbox" id="168"></a></li>
+                                <li><a href="#">Muscular weakness in the leg    <input type="checkbox" id="253"></a></li>
+                                <li><a href="#">Nausea    <input type="checkbox" id="44"></a></li>
+                                <li><a href="#">Neck pain    <input type="checkbox" id="136"></a></li>
+                                <li><a href="#">Neck stiffness    <input type="checkbox" id="234"></a></li>
+                                <li><a href="#">Nervousness    <input type="checkbox" id="114"></a></li>
+                                <li><a href="#">Night cough    <input type="checkbox" id="133"></a></li>
+                                <li><a href="#">Night sweats    <input type="checkbox" id="1004"></a></li>
+                                <li><a href="#">Non-healing skin wound    <input type="checkbox" id="63"></a></li>
+                                <li><a href="#">Nosebleed    <input type="checkbox" id="38"></a></li>
+                                <li><a href="#">Numbness in the arm    <input type="checkbox" id="221"></a></li>
+                                <li><a href="#">Numbness in the leg    <input type="checkbox" id="254"></a></li>
+                                <li><a href="#">Numbness of the hands    <input type="checkbox" id="200"></a></li>
+                                <li><a href="#">Oversensitivity to light    <input type="checkbox" id="137"></a></li>
+                                <li><a href="#">Overweight    <input type="checkbox" id="157"></a></li>
+                                <li><a href="#">Pain in the bones    <input type="checkbox" id="155"></a></li>
+                                <li><a href="#">Pain in the calves    <input type="checkbox" id="142"></a></li>
+                                <li><a href="#">Pain in the limbs    <input type="checkbox" id="12"></a></li>
+                                <li><a href="#">Pain of the anus    <input type="checkbox" id="990"></a></li>
+                                <li><a href="#">Pain on swallowing    <input type="checkbox" id="203"></a></li>
+                                <li><a href="#">Pain radiating to the arm    <input type="checkbox" id="251"></a></li>
+                                <li><a href="#">Pain radiating to the leg    <input type="checkbox" id="103"></a></li>
+                                <li><a href="#">Pain when chewing    <input type="checkbox" id="286"></a></li>
+                                <li><a href="#">Painful defecation    <input type="checkbox" id="189"></a></li>
+                                <li><a href="#">Painful urination    <input type="checkbox" id="109"></a></li>
+                                <li><a href="#">Pallor    <input type="checkbox" id="150"></a></li>
+                                <li><a href="#">Palpitations    <input type="checkbox" id="37"></a></li>
+                                <li><a href="#">Paralysis    <input type="checkbox" id="140"></a></li>
+                                <li><a href="#">Physical inactivity    <input type="checkbox" id="118"></a></li>
+                                <li><a href="#">Problems with the sense of touch in the face    <input type="checkbox" id="129"></a></li>
+                                <li><a href="#">Problems with the sense of touch in the feet    <input type="checkbox" id="130"></a></li>
+                                <li><a href="#">Protrusion of the eyes    <input type="checkbox" id="258"></a></li>
+                                <li><a href="#">Purulent discharge from the urethra    <input type="checkbox" id="172"></a></li>
+                                <li><a href="#">Purulent discharge from the vagina    <input type="checkbox" id="173"></a></li>
+                                <li><a href="#">Rebound tenderness    <input type="checkbox" id="191"></a></li>
+                                <li><a href="#">Reduced appetite    <input type="checkbox" id="54"></a></li>
+                                <li><a href="#">Ringing in the ear    <input type="checkbox" id="78"></a></li>
+                                <li><a href="#">Runny nose    <input type="checkbox" id="14"></a></li>
+                                <li><a href="#">Sadness    <input type="checkbox" id="975"></a></li>
+                                <li><a href="#">Scalp redness    <input type="checkbox" id="269"></a></li>
+                                <li><a href="#">Scar    <input type="checkbox" id="1001"></a></li>
+                                <li><a href="#">Sensitivity to cold    <input type="checkbox" id="60"></a></li>
+                                <li><a href="#">Sensitivity to glare    <input type="checkbox" id="69"></a></li>
+                                <li><a href="#">Sensitivity to noise    <input type="checkbox" id="102"></a></li>
+                                <li><a href="#">Shiny red tongue    <input type="checkbox" id="264"></a></li>
+                                <li><a href="#">Shortness of breath    <input type="checkbox" id="29"></a></li>
+                                <li><a href="#">Side pain    <input type="checkbox" id="183"></a></li>
+                                <li><a href="#">Skin lesion    <input type="checkbox" id="26"></a></li>
+                                <li><a href="#">Skin nodules    <input type="checkbox" id="25"></a></li>
+                                <li><a href="#">Skin rash    <input type="checkbox" id="124"></a></li>
+                                <li><a href="#">Skin redness    <input type="checkbox" id="61"></a></li>
+                                <li><a href="#">Skin thickening    <input type="checkbox" id="217"></a></li>
+                                <li><a href="#">Skin wheal    <input type="checkbox" id="34"></a></li>
+                                <li><a href="#">Sleepiness with spontaneous falling asleep    <input type="checkbox" id="241"></a></li>
+                                <li><a href="#">Sleeplessness    <input type="checkbox" id="52"></a></li>
+                                <li><a href="#">Sneezing    <input type="checkbox" id="95"></a></li>
+                                <li><a href="#">Sore throat    <input type="checkbox" id="13"></a></li>
+                                <li><a href="#">Sputum    <input type="checkbox" id="64"></a></li>
+                                <li><a href="#">Stomach burning    <input type="checkbox" id="179"></a></li>
+                                <li><a href="#">Stress-related leg pain    <input type="checkbox" id="185"></a></li>
+                                <li><a href="#">Stuffy nose    <input type="checkbox" id="28"></a></li>
+                                <li><a href="#">Sweating    <input type="checkbox" id="138"></a></li>
+                                <li><a href="#">Swelling in the genital area    <input type="checkbox" id="236"></a></li>
+                                <li><a href="#">Swelling of the testicles    <input type="checkbox" id="267"></a></li>
+                                <li><a href="#">Swollen glands in the armpit    <input type="checkbox" id="248"></a></li>
+                                <li><a href="#">Swollen glands in the groin    <input type="checkbox" id="249"></a></li>
+                                <li><a href="#">Swollen glands in the neck    <input type="checkbox" id="169"></a></li>
+                                <li><a href="#">Tears    <input type="checkbox" id="211"></a></li>
+                                <li><a href="#">Testicular pain    <input type="checkbox" id="222"></a></li>
+                                <li><a href="#">Tic    <input type="checkbox" id="243"></a></li>
+                                <li><a href="#">Tingling    <input type="checkbox" id="201"></a></li>
+                                <li><a href="#">Tiredness    <input type="checkbox" id="16"></a></li>
+                                <li><a href="#">Toe deformity    <input type="checkbox" id="997"></a></li>
+                                <li><a href="#">Toe swelling    <input type="checkbox" id="1003"></a></li>
+                                <li><a href="#">Tongue burning    <input type="checkbox" id="980"></a></li>
+                                <li><a href="#">Tongue swelling    <input type="checkbox" id="977"></a></li>
+                                <li><a href="#">Tremor at rest    <input type="checkbox" id="115"></a></li>
+                                <li><a href="#">Tremor on movement    <input type="checkbox" id="132"></a></li>
+                                <li><a href="#">Trouble understanding speech    <input type="checkbox" id="988"></a></li>
+                                <li><a href="#">Unconsciousness, short    <input type="checkbox" id="144"></a></li>
+                                <li><a href="#">Uncontrolled defecation    <input type="checkbox" id="265"></a></li>
+                                <li><a href="#">Underweight    <input type="checkbox" id="116"></a></li>
+                                <li><a href="#">Urge to urinate    <input type="checkbox" id="160"></a></li>
+                                <li><a href="#">Urination during the night    <input type="checkbox" id="161"></a></li>
+                                <li><a href="#">Vision impairment    <input type="checkbox" id="68"></a></li>
+                                <li><a href="#">Vision impairment for far objects    <input type="checkbox" id="213"></a></li>
+                                <li><a href="#">Vision impairment for near objects    <input type="checkbox" id="166"></a></li>
+                                <li><a href="#">Visual field loss    <input type="checkbox" id="66"></a></li>
+                                <li><a href="#">Vomiting    <input type="checkbox" id="101"></a></li>
+                                <li><a href="#">Vomiting blood    <input type="checkbox" id="181"></a></li>
+                                <li><a href="#">Weakness or numbness on right or left side of body    <input type="checkbox" id="972"></a></li>
+                                <li><a href="#">Weight gain    <input type="checkbox" id="23"></a></li>
+                                <li><a href="#">Weight loss    <input type="checkbox" id="22"></a></li>
+                                <li><a href="#">Wheezing    <input type="checkbox" id="30"></a></li>
+                                <li><a href="#">Wound    <input type="checkbox" id="187"></a></li>
+                                <li><a href="#">Yellow colored skin    <input type="checkbox" id="105"></a></li>
+                                <li><a href="#">Yellowish discoloration of the white part of the eye    <input type="checkbox" id="106"></a></li>
+                             </ul>
+                        </input>
+                    </div>                    
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    
+    
+    <div class="bg">            
+        <div id="modalBack" class ="wrapper">
+        <button type="button" class="btn btn-info btn-lg btn-lg" data-toggle="modal" data-target="#myModal">Click to enter symptoms</button>
+        </div>  
 
-        <div class="bg">
+        <div class="logo"></div>
+    </div>
 
-            <div id="map" class="container"></div>
-        
-        </div>
+    <div id="map"></div>
 
     <script src="./maps.js"></script>
-  </body>
+    <script src="./search.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJZ4pbbEkmQLg9Pif5mEv7UL_f1C_mRY&callback=initMap"
+    async defer></script>
+    <script src="./markerclusterer_compiled.js"></script>
+  </body onload="hideSympt()">
 </html> 
 

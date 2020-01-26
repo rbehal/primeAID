@@ -4,9 +4,11 @@ body, html {
     padding: 0;
   }
 
+
 .bg {
     /* The image used */
-    background-image: url(./media/becoming-doctor.jpg);
+    background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(./media/becoming-doctor.jpg);
+    
   
     /* Full height */
     height: 100%;
@@ -15,8 +17,89 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
+}
+
+.logo{
+  /* The image used */
+  content: url(./media/logo.png);
+  mix-blend-mode: multiply;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%)
+  
+
   }
 
+.wrapper {
+  
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  position: relative;
+  top: 25%;
+  transform: translateY(-25%);
+ 
+ }
 #map {
     height: 100%;
+}
+
+
+#myInput {
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: rgb(34, 29, 29); /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }
