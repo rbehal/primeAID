@@ -16,9 +16,32 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.5
+    opacity: 0.3
 }
 
+.logo{
+  /* The image used */
+  content: url(./media/logo.png);
+  mix-blend-mode: multiply;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  z-index: 0;
+  
+
+  }
+
+.wrapper {
+  
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  top: 25%;
+  transform: translateY(-25%);
+  position: relative;
+  z-index: 100;
+  
+}
 #map {
     height: 100%;
 }
