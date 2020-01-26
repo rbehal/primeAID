@@ -1,6 +1,6 @@
 var ul = document.getElementById("myUL");
 var li = ul.getElementsByTagName("li");
-    
+var diagnosis = [];
 
 function searchFunction() {
     var input, filter, a, i, txtValue;
@@ -33,6 +33,38 @@ function checkSympt() {
         if (document.getElementById(check_id).checked == true) {
             symptHave.push(symptList[i]);
         }
-    }
-    return symptHave; 
+    } 
+    getSympt(symptHave);
+    getDiag();
+    a_sync = true;
+}
+
+function getDiag() {
+    $.ajax({
+        url: "http://127.0.0.1:5000/",
+        type: "GET",
+        data: {time: $(this).data('timestamp')},
+        success: function(response) {
+            var symptoms = JSON.parse(response);
+            diagnosis = symptoms; 
+        },
+    });
+}
+
+function getSympt(symptoms) {
+    var symptArr = symptoms;
+    var dummyObj = {"obj":symptArr}
+    var symptJSON = JSON.stringify(dummyObj);
+    $.ajax({
+        async: false,
+        url: "http://127.0.0.1:5000/",
+        type: "POST",
+        data: symptJSON,
+        datatype: "json",
+        contentType: "application/json"
+    });
+}
+
+function triageResult() {
+    document.getElementById
 }
