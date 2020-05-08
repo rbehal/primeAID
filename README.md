@@ -1,4 +1,5 @@
 # primeAID
+[Devpost Here](https://devpost.com/software/primeaid)
 
 ## Inspiration
 As four students who have dealt extensively with the Canadian healthcare system, we knew there was an incredible room for improvement. Canada doesn’t fare well when it comes to emergency department wait times; it ranked last among the 11 countries surveyed by the OECD, with an average wait time of over four hours. Furthermore, in 2013, a US commission found that 70% of all critical events and delays in patient care could be traced to communication breakdowns. 
